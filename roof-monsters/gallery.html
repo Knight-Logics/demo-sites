@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Gallery | Roof Monsters — Tampa Bay Roofing</title>
+  <meta name="description" content="Browse Roof Monsters' project gallery — exceptional roofing installations, repairs, and custom solutions across Pasco, Pinellas, and Hillsborough County, FL." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Roboto+Slab:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .gallery-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-page-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+      aspect-ratio: 4/3;
+    }
+    .gallery-page-item.tall { aspect-ratio: 3/4; }
+    .gallery-page-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .gallery-page-item:hover img { transform: scale(1.06); }
+    @media (max-width: 768px) {
+      .gallery-page-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .gallery-page-grid { grid-template-columns: 1fr; }
+      .gallery-page-item.tall { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-info">
+        <span class="topbar-item"><i class="fa-solid fa-location-dot"></i> Serving All Of The Tampa Bay Area!</span>
+        <span class="topbar-item"><i class="fa-solid fa-phone"></i> Hot Line : <a href="tel:7274393869">(727) 439-3869</a></span>
+      </div>
+      <div class="topbar-social">
+        <a href="https://www.facebook.com/profile.php?id=61559872716214" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="https://roofmonsters.co/wp-content/uploads/2025/01/unnamed.png" alt="Roof Monsters Logo" />
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="special-offers.html">Special Offers</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Project <span class="accent">Gallery</span></h1>
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Project Gallery</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="section-pad" style="background:var(--bg-light);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Our Projects</span>
+        <h2>Quality <span class="accent">Workmanship</span> Done Right The First Time.</h2>
+        <p class="section-desc">Explore our project gallery showcasing exceptional roofing installations, repairs, and custom solutions — highlighting our craftsmanship and high-quality standards across Tampa Bay.</p>
+      </div>
+      <div class="gallery-page-grid">
+
+        <div class="gallery-page-item tall">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/IMG_6006.jpg" alt="Roof Installation Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/IMG_5993.jpg" alt="Roofing Work" loading="lazy" />
+        </div>
+        <div class="gallery-page-item tall">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/FireShot-Capture-102-Atlas-roof-pictures-Google-Drive-drive.google.com_-e1737566288472.png" alt="Atlas Roof Installation" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/IMG_5994-1.jpg" alt="Completed Roof Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/473619572_122153237438329090_1935536644784443363_n.jpg" alt="Roof Monsters Team" loading="lazy" />
+        </div>
+        <div class="gallery-page-item tall">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/FireShot-Capture-103-Atlas-roof-pictures-Google-Drive-drive.google.com_-e1737566357418.png" alt="Atlas Roof Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/IMG_6015.jpg" alt="Roof Installation" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/New-Roof-Pinellas-County-Florida.jpg" alt="New Roof Pinellas County Florida" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/IMG_7612.jpg" alt="Roof Monsters Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/IMG_7611.jpg" alt="Roof Replacement Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/IMG_7610.jpeg" alt="Roofing Installation" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/IMG_7565.jpeg" alt="Completed Roofing Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/4353A7A7F8612BEFC428715EDFA7CC95-scaled.jpg" alt="Roof Monsters Quality Work" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/08/F28F4EF9BB3B4DDEE1861426C663ACB0-scaled.jpg" alt="Tampa Bay Roofing Project" loading="lazy" />
+        </div>
+        <div class="gallery-page-item">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/436379617_122100952934329090_785895433237978047_n-1024x1024.jpg" alt="Roof Monsters Team Photo" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="atlas-banner" style="background-image: url('https://roofmonsters.co/wp-content/uploads/2025/01/Atlas_Designer_Shingles_featuring_Scotchgard_-_Lock-up_2-1024x400.jpg');">
+    <div class="atlas-overlay"></div>
+    <div class="container atlas-inner">
+      <div class="atlas-content">
+        <p class="section-eyebrow">Start Your Project</p>
+        <h2>Ready For A <span class="accent">New Roof?</span></h2>
+        <p>Join thousands of Tampa Bay homeowners who trust Roof Monsters for quality roofing solutions. Contact us today for your free inspection and estimate.</p>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:20px;">Get A Free Estimate</a>
+      </div>
+      <div class="atlas-stat">
+        <div class="atlas-num">10,000 +</div>
+        <div class="atlas-label">Happy Clients All Over The Bay Area!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-col footer-about">
+          <img src="https://roofmonsters.co/wp-content/uploads/2025/01/unnamed.png" alt="Roof Monsters Logo" class="footer-logo" />
+          <p>Roof Monsters, founded in 1988, specializes in premium residential and commercial roofing solutions in all of Pasco – Pinellas – Hernando – Hillsborough &amp; Manatee Counties in Florida. Family owned and operated by Florida natives serving Florida for almost 40 years!</p>
+          <p class="license"><em><strong>Licenses: CCC1335398 and CBC015719</strong></em></p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick <span class="accent">Links</span></h4>
+          <ul class="footer-links">
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
+            <li><a href="special-offers.html"><i class="fa-solid fa-chevron-right"></i> Special Offers</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Our <span class="accent">Services</span></h4>
+          <ul class="footer-links">
+            <li><a href="service-installation.html"><i class="fa-solid fa-chevron-right"></i> Roof Installations</a></li>
+            <li><a href="service-repairs.html"><i class="fa-solid fa-chevron-right"></i> Roof Repairs</a></li>
+            <li><a href="service-inspections.html"><i class="fa-solid fa-chevron-right"></i> Free Inspections</a></li>
+            <li><a href="service-gutters.html"><i class="fa-solid fa-chevron-right"></i> Gutter Services</a></li>
+            <li><a href="service-skylights.html"><i class="fa-solid fa-chevron-right"></i> Skylight Installation</a></li>
+            <li><a href="service-storm-damage.html"><i class="fa-solid fa-chevron-right"></i> Storm Damage</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact-col">
+          <h4>Contact <span class="accent">Us</span></h4>
+          <ul class="footer-contact-list">
+            <li><i class="fa-solid fa-location-dot"></i> Serving all of Pasco, Pinellas, Hernando, Hillsborough &amp; Manatee Counties, FL</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:7274393869">(727) 439-3869</a></li>
+            <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/profile.php?id=61559872716214" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 Roof Monsters. All Rights Reserved. | Licenses: CCC1335398 &amp; CBC015719</p>
+        <p style="margin-top:6px;font-size:.8em;opacity:.65;">Website design by <a href="https://knightlogics.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Knight Logics</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
