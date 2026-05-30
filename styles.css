@@ -221,6 +221,34 @@ a {
   padding: 28px;
 }
 
+
+.site-footer {
+  border-top: 1px solid rgba(9, 20, 35, 0.12);
+  background: #091423;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 28px 0;
+}
+
+.site-footer__inner {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.site-footer a {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--cyan);
+}
 @media (max-width: 820px) {
   .demo-card {
     grid-template-columns: 1fr;
