@@ -4,6 +4,9 @@ Public repository for lightweight pitch demos and concept sites.
 
 ## Current demos
 
+- `clft-inc/` — Tampa drainage and French drain demo for CLFT INC
+- `kreative-dreams-academy/` — child care and early learning demo for Kreative Dreams Academy
+- `roof-monsters/` — Tampa Bay roofing multi-page demo concept for Roof Monsters
 - `titan-roofing-repairs/` — owner-led Georgia roofing demo concept built from supplied branding and project images
 
 ## Publishing model
@@ -15,4 +18,7 @@ Public repository for lightweight pitch demos and concept sites.
 ## GitHub Pages
 
 - Root landing page: `/`
+- CLFT INC demo: `/clft-inc/`
+- Kreative Dreams Academy demo: `/kreative-dreams-academy/`
+- Roof Monsters demo: `/roof-monsters/`
 - Titan demo: `/titan-roofing-repairs/`
