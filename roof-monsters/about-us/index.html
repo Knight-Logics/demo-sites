@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+(function () {
+  var path = location.pathname;
+  var marker = '/roof-monsters/';
+  var idx = path.indexOf(marker);
+  window.__RM_BASE__ = idx >= 0 ? path.slice(0, idx + marker.length) : '/';
+  document.write('<base href="' + window.__RM_BASE__ + '">');
+})();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us | Roof Monsters â€” Tampa Bay Roofing Since 1988</title>
@@ -9,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Roboto+Slab:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
     <div id="site-header-include"></div>
@@ -19,7 +28,7 @@
     <div class="container">
       <h1>About <span class="accent">Us</span></h1>
       <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="/">Home</a>
+        <a href="./">Home</a>
         <i class="fa-solid fa-chevron-right"></i>
         <span>About Us</span>
       </nav>
@@ -60,8 +69,8 @@
         </div>
       </div>
       <div>
-        <img src="/assets/images/team/crew-at-work.webp" alt="Roof Monsters crew at work" class="about-photo about-photo--spaced" />
-        <img src="/assets/images/gallery/completed-05.webp" alt="Completed roofing project" class="about-photo" />
+        <img src="assets/images/team/crew-at-work.webp" alt="Roof Monsters crew at work" class="about-photo about-photo--spaced" />
+        <img src="assets/images/gallery/completed-05.webp" alt="Completed roofing project" class="about-photo" />
       </div>
     </div>
   </section>
@@ -127,14 +136,14 @@
       </div>
       <div class="team-grid">
         <div class="team-image">
-          <img src="/assets/images/team/rob-lewis.webp" alt="Roof Monsters Team" />
+          <img src="assets/images/team/rob-lewis.webp" alt="Roof Monsters Team" />
         </div>
         <div class="team-content">
           <p class="section-eyebrow">Florida Natives Serving Florida</p>
           <h2>Family Owned &amp; Operated <span class="accent">Since 1988</span></h2>
           <p>Our expert team at Roof Monsters brings decades of experience and unparalleled skill to every roofing project. <strong>Family owned and operated by Florida natives serving Florida for almost 40 years!</strong> We are dedicated to delivering top-notch craftsmanship, using the best materials and latest techniques.</p>
           <p>Trust Roof Monsters for reliable, high-quality roofing solutions. Our commitment to excellence ensures your roof is built to last and meets the highest standards â€” backed by our industry-leading 15-year workmanship warranty.</p>
-          <a href="/contact-us/" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> Get A Free Estimate</a>
+          <a href="contact-us/" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> Get A Free Estimate</a>
         </div>
       </div>
     </div>
@@ -180,7 +189,7 @@
   </section>
     <div id="site-footer-include"></div>
 
-  <script src="/includes.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="includes.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

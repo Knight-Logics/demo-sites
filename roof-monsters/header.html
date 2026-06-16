@@ -6,8 +6,28 @@
         <span></span>
         <span></span>
       </button>
-      <a class="brand" href="/" aria-label="Roof Monsters home">
-        <img src="/assets/images/brand/logo.webp" alt="" class="brand-logo" width="175" height="70" decoding="async" />
+      <a class="brand" href="./" aria-label="Roof Monsters home">
+        <span class="rm-brand-logo rm-brand-logo--header">
+          <img class="rm-brand-logo__bg" src="assets/images/brand/logo-bg.png" alt="" width="640" height="736" decoding="async" />
+          <span class="rm-brand-logo__monster" aria-hidden="true">
+            <span class="rm-brand-logo__scene">
+              <span class="rm-brand-logo__spinner">
+                <span class="rm-brand-logo__face rm-brand-logo__face--front">
+                  <picture>
+                    <source srcset="assets/images/brand/logo-monster.webp" type="image/webp" />
+                    <img src="assets/images/brand/logo-monster.png" alt="" decoding="async" loading="eager" />
+                  </picture>
+                </span>
+                <span class="rm-brand-logo__face rm-brand-logo__face--back">
+                  <picture>
+                    <source srcset="assets/images/brand/logo-monster.webp" type="image/webp" />
+                    <img src="assets/images/brand/logo-monster.png" alt="" decoding="async" loading="eager" />
+                  </picture>
+                </span>
+              </span>
+            </span>
+          </span>
+        </span>
         <span class="brand-lockup">
           <span class="brand-name">Roof Monsters</span>
           <span class="brand-tagline">Tampa Bay Roofing Since 1988</span>
@@ -16,21 +36,21 @@
     </div>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/about-us/">About</a>
+      <a href="./">Home</a>
+      <a href="about-us/">About</a>
       <div class="nav-dropdown-wrap">
         <button class="nav-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="true">
           Services
           <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </button>
         <div class="nav-dropdown-menu" role="menu">
-          <a href="/services/" role="menuitem">All Services</a>
-          <a href="/services/comprehensive-roof-installations/" role="menuitem">Roof Installation</a>
-          <a href="/services/expert-roof-repairs-and-maintenance/" role="menuitem">Roof Repairs</a>
-          <a href="/services/free-roof-inspections-and-consultations/" role="menuitem">Free Inspections</a>
-          <a href="/services/storm-damage-repair-specialists/" role="menuitem">Storm Damage</a>
-          <a href="/services/gutter-installation-and-cleaning/" role="menuitem">Gutter Services</a>
-          <a href="/services/skylight-installation-and-repair/" role="menuitem">Skylight Installation</a>
+          <a href="services/" role="menuitem">All Services</a>
+          <a href="services/comprehensive-roof-installations/" role="menuitem">Roof Installation</a>
+          <a href="services/expert-roof-repairs-and-maintenance/" role="menuitem">Roof Repairs</a>
+          <a href="services/free-roof-inspections-and-consultations/" role="menuitem">Free Inspections</a>
+          <a href="services/storm-damage-repair-specialists/" role="menuitem">Storm Damage</a>
+          <a href="services/gutter-installation-and-cleaning/" role="menuitem">Gutter Services</a>
+          <a href="services/skylight-installation-and-repair/" role="menuitem">Skylight Installation</a>
         </div>
       </div>
       <div class="nav-dropdown-wrap">
@@ -38,24 +58,33 @@
           Service Areas
           <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </button>
-        <div class="nav-dropdown-menu" role="menu">
-          <a href="/about-us/locations-we-serve/" role="menuitem">All Service Areas</a>
-          <a href="/about-us/locations-we-serve/roofing-company-palm-harbor-florida/" role="menuitem">Palm Harbor</a>
-          <a href="/about-us/locations-we-serve/roofing-company-pinellas-county-florida/" role="menuitem">Pinellas County</a>
-          <a href="/about-us/locations-we-serve/roofing-company-seminole-florida/" role="menuitem">Seminole</a>
-          <a href="/about-us/locations-we-serve/roofing-company-pasco-county-florida/" role="menuitem">Pasco County</a>
-          <a href="/about-us/locations-we-serve/roofing-company-hernando-county-florida/" role="menuitem">Hernando County</a>
-          <a href="/about-us/locations-we-serve/roofing-company-hillsborough-county-florida/" role="menuitem">Hillsborough County</a>
-          <a href="/about-us/locations-we-serve/roofing-company-manatee-county-florida/" role="menuitem">Manatee County</a>
+        <div class="nav-dropdown-menu nav-dropdown-menu--areas" role="menu">
+          <a href="about-us/locations-we-serve/" role="menuitem">All Service Areas</a>
+          <span class="nav-dropdown-label" role="presentation">Dunedin HQ · Pinellas</span>
+          <a href="about-us/locations-we-serve/roofing-company-dunedin-florida/" role="menuitem">Dunedin (Headquarters)</a>
+          <a href="about-us/locations-we-serve/roofing-company-pinellas-county-florida/" role="menuitem">Pinellas County</a>
+          <a href="about-us/locations-we-serve/roofing-company-clearwater-florida/" role="menuitem">Clearwater</a>
+          <a href="about-us/locations-we-serve/roofing-company-st-petersburg-florida/" role="menuitem">St. Petersburg</a>
+          <a href="about-us/locations-we-serve/roofing-company-largo-florida/" role="menuitem">Largo</a>
+          <a href="about-us/locations-we-serve/roofing-company-palm-harbor-florida/" role="menuitem">Palm Harbor</a>
+          <a href="about-us/locations-we-serve/roofing-company-seminole-florida/" role="menuitem">Seminole</a>
+          <a href="about-us/locations-we-serve/roofing-company-safety-harbor-florida/" role="menuitem">Safety Harbor</a>
+          <span class="nav-dropdown-label" role="presentation">All Five Counties</span>
+          <a href="about-us/locations-we-serve/roofing-company-pasco-county-florida/" role="menuitem">Pasco County</a>
+          <a href="about-us/locations-we-serve/roofing-company-hillsborough-county-florida/" role="menuitem">Hillsborough County</a>
+          <a href="about-us/locations-we-serve/roofing-company-hernando-county-florida/" role="menuitem">Hernando County</a>
+          <a href="about-us/locations-we-serve/roofing-company-manatee-county-florida/" role="menuitem">Manatee County</a>
+          <a href="about-us/locations-we-serve/roofing-company-tampa-florida/" role="menuitem">Tampa</a>
+          <a href="about-us/locations-we-serve/roofing-company-new-port-richey-florida/" role="menuitem">New Port Richey</a>
         </div>
       </div>
-      <a href="/special-offers/">Offers</a>
-      <a href="/gallery/">Gallery</a>
-      <a href="/blog/">Blog</a>
+      <a href="special-offers/">Offers</a>
+      <a href="gallery/">Gallery</a>
+      <a href="blog/">Blog</a>
     </nav>
 
     <div class="header-actions">
-      <a href="/contact-us/" class="header-quote-btn">Free Quote!</a>
+      <a href="contact-us/" class="header-quote-btn">Free Quote!</a>
       <a class="header-cta" href="tel:7274393869" aria-label="Call Roof Monsters at (727) 439-3869">
         <span class="header-cta-icon" aria-hidden="true">
           <i class="fa-solid fa-phone"></i>
@@ -73,44 +102,71 @@
 
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true" inert>
   <div class="mobile-nav-header">
-    <img src="/assets/images/brand/logo.webp" alt="Roof Monsters logo" class="mobile-nav-logo" width="175" height="70" loading="lazy" decoding="async" />
+    <span class="rm-brand-logo rm-brand-logo--drawer">
+      <img class="rm-brand-logo__bg" src="assets/images/brand/logo-bg.webp" alt="" width="640" height="736" loading="lazy" decoding="async" />
+      <span class="rm-brand-logo__monster" aria-hidden="true">
+        <span class="rm-brand-logo__scene">
+          <span class="rm-brand-logo__spinner">
+            <span class="rm-brand-logo__face rm-brand-logo__face--front">
+              <picture>
+                <source srcset="assets/images/brand/logo-monster.webp" type="image/webp" />
+                <img src="assets/images/brand/logo-monster.png" alt="" loading="lazy" decoding="async" />
+              </picture>
+            </span>
+            <span class="rm-brand-logo__face rm-brand-logo__face--back">
+              <picture>
+                <source srcset="assets/images/brand/logo-monster.webp" type="image/webp" />
+                <img src="assets/images/brand/logo-monster.png" alt="" loading="lazy" decoding="async" />
+              </picture>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
     <button class="mobile-nav-close" id="mobile-nav-close" type="button" aria-label="Close navigation menu">
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
   </div>
   <div class="mobile-nav-links">
-    <a href="/">Home</a>
-    <a href="/about-us/">About</a>
+    <a href="./">Home</a>
+    <a href="about-us/">About</a>
     <button class="mobile-services-toggle" id="mobile-services-toggle" type="button" aria-expanded="false">
       Services
       <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
     </button>
     <div class="mobile-services-sub" id="mobile-services-sub">
-      <a href="/services/">All Services</a>
-      <a href="/services/comprehensive-roof-installations/">Roof Installation</a>
-      <a href="/services/expert-roof-repairs-and-maintenance/">Roof Repairs</a>
-      <a href="/services/free-roof-inspections-and-consultations/">Free Inspections</a>
-      <a href="/services/storm-damage-repair-specialists/">Storm Damage</a>
-      <a href="/services/gutter-installation-and-cleaning/">Gutter Services</a>
-      <a href="/services/skylight-installation-and-repair/">Skylight Installation</a>
+      <a href="services/">All Services</a>
+      <a href="services/comprehensive-roof-installations/">Roof Installation</a>
+      <a href="services/expert-roof-repairs-and-maintenance/">Roof Repairs</a>
+      <a href="services/free-roof-inspections-and-consultations/">Free Inspections</a>
+      <a href="services/storm-damage-repair-specialists/">Storm Damage</a>
+      <a href="services/gutter-installation-and-cleaning/">Gutter Services</a>
+      <a href="services/skylight-installation-and-repair/">Skylight Installation</a>
     </div>
     <button class="mobile-areas-toggle" id="mobile-areas-toggle" type="button" aria-expanded="false">
       Service Areas
       <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
     </button>
     <div class="mobile-areas-sub" id="mobile-areas-sub">
-      <a href="/about-us/locations-we-serve/">All Service Areas</a>
-      <a href="/about-us/locations-we-serve/roofing-company-palm-harbor-florida/">Palm Harbor</a>
-      <a href="/about-us/locations-we-serve/roofing-company-pinellas-county-florida/">Pinellas County</a>
-      <a href="/about-us/locations-we-serve/roofing-company-seminole-florida/">Seminole</a>
-      <a href="/about-us/locations-we-serve/roofing-company-pasco-county-florida/">Pasco County</a>
-      <a href="/about-us/locations-we-serve/roofing-company-hernando-county-florida/">Hernando County</a>
-      <a href="/about-us/locations-we-serve/roofing-company-hillsborough-county-florida/">Hillsborough County</a>
-      <a href="/about-us/locations-we-serve/roofing-company-manatee-county-florida/">Manatee County</a>
+      <a href="about-us/locations-we-serve/">All Service Areas</a>
+      <a href="about-us/locations-we-serve/roofing-company-dunedin-florida/">Dunedin (HQ)</a>
+      <a href="about-us/locations-we-serve/roofing-company-pinellas-county-florida/">Pinellas County</a>
+      <a href="about-us/locations-we-serve/roofing-company-clearwater-florida/">Clearwater</a>
+      <a href="about-us/locations-we-serve/roofing-company-st-petersburg-florida/">St. Petersburg</a>
+      <a href="about-us/locations-we-serve/roofing-company-largo-florida/">Largo</a>
+      <a href="about-us/locations-we-serve/roofing-company-palm-harbor-florida/">Palm Harbor</a>
+      <a href="about-us/locations-we-serve/roofing-company-seminole-florida/">Seminole</a>
+      <a href="about-us/locations-we-serve/roofing-company-safety-harbor-florida/">Safety Harbor</a>
+      <a href="about-us/locations-we-serve/roofing-company-pasco-county-florida/">Pasco County</a>
+      <a href="about-us/locations-we-serve/roofing-company-hillsborough-county-florida/">Hillsborough County</a>
+      <a href="about-us/locations-we-serve/roofing-company-hernando-county-florida/">Hernando County</a>
+      <a href="about-us/locations-we-serve/roofing-company-manatee-county-florida/">Manatee County</a>
+      <a href="about-us/locations-we-serve/roofing-company-tampa-florida/">Tampa</a>
+      <a href="about-us/locations-we-serve/roofing-company-new-port-richey-florida/">New Port Richey</a>
     </div>
-    <a href="/special-offers/">Special Offers</a>
-    <a href="/gallery/">Gallery</a>
-    <a href="/blog/">Blog</a>
+    <a href="special-offers/">Special Offers</a>
+    <a href="gallery/">Gallery</a>
+    <a href="blog/">Blog</a>
   </div>
   <div class="mobile-nav-cta">
     <a class="mobile-nav-call" href="tel:7274393869" aria-label="Call Roof Monsters at (727) 439-3869">
@@ -122,7 +178,7 @@
         <span class="mobile-nav-call-number">(727) 439-3869</span>
       </span>
     </a>
-    <a href="/contact-us/" class="mobile-nav-quote">Free Quote!</a>
+    <a href="contact-us/" class="mobile-nav-quote">Free Quote!</a>
   </div>
   <div class="mobile-nav-social">
     <p class="mobile-nav-social-label">Follow Us</p>

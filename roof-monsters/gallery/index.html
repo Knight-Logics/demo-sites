@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+(function () {
+  var path = location.pathname;
+  var marker = '/roof-monsters/';
+  var idx = path.indexOf(marker);
+  window.__RM_BASE__ = idx >= 0 ? path.slice(0, idx + marker.length) : '/';
+  document.write('<base href="' + window.__RM_BASE__ + '">');
+})();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Gallery | Roof Monsters â€” Tampa Bay Roofing</title>
@@ -9,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Roboto+Slab:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
     <div id="site-header-include"></div>
@@ -19,7 +28,7 @@
     <div class="container">
       <h1>Our Project <span class="accent">Gallery</span></h1>
       <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="/">Home</a>
+        <a href="./">Home</a>
         <i class="fa-solid fa-chevron-right"></i>
         <span>Project Gallery</span>
       </nav>
@@ -37,49 +46,49 @@
       <div class="gallery-page-grid">
 
         <div class="gallery-page-item tall">
-          <img src="/assets/images/gallery/installation-01.webp" alt="Roof Installation Project" loading="lazy" />
+          <img src="assets/images/gallery/installation-01.webp" alt="Roof Installation Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/project-02.webp" alt="Roofing Work" loading="lazy" />
+          <img src="assets/images/gallery/project-02.webp" alt="Roofing Work" loading="lazy" />
         </div>
         <div class="gallery-page-item tall">
-          <img src="/assets/images/gallery/atlas-install-01.webp" alt="Atlas Roof Installation" loading="lazy" />
+          <img src="assets/images/gallery/atlas-install-01.webp" alt="Atlas Roof Installation" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/completed-03.webp" alt="Completed Roof Project" loading="lazy" />
+          <img src="assets/images/gallery/completed-03.webp" alt="Completed Roof Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/team/crew-01.webp" alt="Roof Monsters Team" loading="lazy" />
+          <img src="assets/images/team/crew-01.webp" alt="Roof Monsters Team" loading="lazy" />
         </div>
         <div class="gallery-page-item tall">
-          <img src="/assets/images/gallery/atlas-install-02.webp" alt="Atlas Roof Project" loading="lazy" />
+          <img src="assets/images/gallery/atlas-install-02.webp" alt="Atlas Roof Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/installation-04.webp" alt="Roof Installation" loading="lazy" />
+          <img src="assets/images/gallery/installation-04.webp" alt="Roof Installation" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/pinellas-new-roof.webp" alt="New Roof Pinellas County Florida" loading="lazy" />
+          <img src="assets/images/gallery/pinellas-new-roof.webp" alt="New Roof Pinellas County Florida" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/project-09.webp" alt="Roof Monsters Project" loading="lazy" />
+          <img src="assets/images/gallery/project-09.webp" alt="Roof Monsters Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/replacement-08.webp" alt="Roof Replacement Project" loading="lazy" />
+          <img src="assets/images/gallery/replacement-08.webp" alt="Roof Replacement Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/installation-07.webp" alt="Roofing Installation" loading="lazy" />
+          <img src="assets/images/gallery/installation-07.webp" alt="Roofing Installation" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/completed-06.webp" alt="Completed Roofing Project" loading="lazy" />
+          <img src="assets/images/gallery/completed-06.webp" alt="Completed Roofing Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/quality-work.webp" alt="Roof Monsters Quality Work" loading="lazy" />
+          <img src="assets/images/gallery/quality-work.webp" alt="Roof Monsters Quality Work" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/gallery/tampa-bay-project.webp" alt="Tampa Bay Roofing Project" loading="lazy" />
+          <img src="assets/images/gallery/tampa-bay-project.webp" alt="Tampa Bay Roofing Project" loading="lazy" />
         </div>
         <div class="gallery-page-item">
-          <img src="/assets/images/team/rob-lewis-square.webp" alt="Roof Monsters Team Photo" loading="lazy" />
+          <img src="assets/images/team/rob-lewis-square.webp" alt="Roof Monsters Team Photo" loading="lazy" />
         </div>
 
       </div>
@@ -94,7 +103,7 @@
         <p class="section-eyebrow">Start Your Project</p>
         <h2>Ready For A <span class="accent">New Roof?</span></h2>
         <p>Join thousands of Tampa Bay homeowners who trust Roof Monsters for quality roofing solutions. Contact us today for your free inspection and estimate.</p>
-        <a href="/contact-us/" class="btn btn-primary u-mt-20">Get A Free Estimate</a>
+        <a href="contact-us/" class="btn btn-primary u-mt-20">Get A Free Estimate</a>
       </div>
       <div class="atlas-stat">
         <div class="atlas-num">10,000 +</div>
@@ -104,7 +113,7 @@
   </section>
     <div id="site-footer-include"></div>
 
-  <script src="/includes.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="includes.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

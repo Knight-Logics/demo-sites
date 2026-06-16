@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+(function () {
+  var path = location.pathname;
+  var marker = '/roof-monsters/';
+  var idx = path.indexOf(marker);
+  window.__RM_BASE__ = idx >= 0 ? path.slice(0, idx + marker.length) : '/';
+  document.write('<base href="' + window.__RM_BASE__ + '">');
+})();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testimonials | Roof Monsters â€” Tampa Bay Roofing</title>
@@ -9,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Roboto+Slab:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
     <div id="site-header-include"></div>
@@ -19,7 +28,7 @@
     <div class="container">
       <h1>Our <span class="accent">Testimonials</span></h1>
       <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="/">Home</a>
+        <a href="./">Home</a>
         <i class="fa-solid fa-chevron-right"></i>
         <span>Testimonials</span>
       </nav>
@@ -39,7 +48,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="Al Gregg" />
+            <img src="assets/images/brand/default-avatar.svg" alt="Al Gregg" />
             <div class="review-meta">
               <strong>Al Gregg</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -51,7 +60,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="John Weston" />
+            <img src="assets/images/brand/default-avatar.svg" alt="John Weston" />
             <div class="review-meta">
               <strong>John Weston</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -63,7 +72,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="Diana Andonian" />
+            <img src="assets/images/brand/default-avatar.svg" alt="Diana Andonian" />
             <div class="review-meta">
               <strong>Diana Andonian</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -75,7 +84,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="Sue Hoover" />
+            <img src="assets/images/brand/default-avatar.svg" alt="Sue Hoover" />
             <div class="review-meta">
               <strong>Sue Hoover</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -87,7 +96,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="Tampa Bay Homeowner" />
+            <img src="assets/images/brand/default-avatar.svg" alt="Tampa Bay Homeowner" />
             <div class="review-meta">
               <strong>Michael T.</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -99,7 +108,7 @@
 
         <div class="review-card">
           <div class="review-header">
-            <img src="/assets/images/brand/default-avatar.svg" alt="Pinellas County Customer" />
+            <img src="assets/images/brand/default-avatar.svg" alt="Pinellas County Customer" />
             <div class="review-meta">
               <strong>Karen M.</strong>
               <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -145,7 +154,7 @@
           <p>Ready to experience the Roof Monsters difference? Contact us today for a free, no-obligation inspection and quote.</p>
           <div class="cta-action-stack">
             <a href="tel:7274393869" class="btn btn-primary btn-block"><i class="fa-solid fa-phone"></i> (727) 439-3869</a>
-            <a href="/contact-us/" class="btn btn-primary btn-block btn-block--dark"><i class="fa-solid fa-envelope"></i> Send A Message</a>
+            <a href="contact-us/" class="btn btn-primary btn-block btn-block--dark"><i class="fa-solid fa-envelope"></i> Send A Message</a>
           </div>
           <p class="license-note">Licensed • Insured • Roofing CCC1335398, CCC052490 · Building CBC015719</p>
         </div>
@@ -154,7 +163,7 @@
   </section>
     <div id="site-footer-include"></div>
 
-  <script src="/includes.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="includes.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

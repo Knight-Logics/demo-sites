@@ -10,9 +10,16 @@ const SERVICE_SLUGS = [
 ];
 
 const LOCATION_SLUGS = [
+  'roofing-company-dunedin-florida',
+  'roofing-company-clearwater-florida',
+  'roofing-company-st-petersburg-florida',
+  'roofing-company-largo-florida',
   'roofing-company-palm-harbor-florida',
-  'roofing-company-pinellas-county-florida',
   'roofing-company-seminole-florida',
+  'roofing-company-safety-harbor-florida',
+  'roofing-company-tampa-florida',
+  'roofing-company-new-port-richey-florida',
+  'roofing-company-pinellas-county-florida',
   'roofing-company-pasco-county-florida',
   'roofing-company-hernando-county-florida',
   'roofing-company-hillsborough-county-florida',
@@ -25,16 +32,31 @@ const BLOG_POST_SLUGS = [
   'how-to-prepare-your-roof-for-floridas-hurricane-season',
 ];
 
+function getSiteBase() {
+  if (typeof window.__RM_BASE__ === 'string' && window.__RM_BASE__) {
+    return window.__RM_BASE__;
+  }
+  const path = window.location.pathname;
+  const marker = '/roof-monsters/';
+  const idx = path.indexOf(marker);
+  return idx >= 0 ? path.slice(0, idx + marker.length) : '/';
+}
+
 function getIncludeBase() {
   const script = document.querySelector('script[src*="includes.js"]');
   if (!script || !script.src) {
-    return `${window.location.origin}/`;
+    return `${window.location.origin}${getSiteBase()}`;
   }
   return script.src.replace(/includes\.js(?:\?.*)?$/, '');
 }
 
 function normalizeSitePath(pathname) {
   let path = pathname || '/';
+  const siteBase = getSiteBase();
+  if (siteBase !== '/' && path.startsWith(siteBase.replace(/\/$/, ''))) {
+    path = path.slice(siteBase.length - 1);
+    if (!path.startsWith('/')) path = `/${path}`;
+  }
   if (path.endsWith('/index.html')) {
     path = path.slice(0, -'index.html'.length);
   } else if (path.endsWith('.html')) {
@@ -74,7 +96,7 @@ function applyNavActive() {
 
     let linkPath;
     try {
-      linkPath = normalizeSitePath(new URL(href, window.location.origin).pathname);
+      linkPath = normalizeSitePath(new URL(href, document.baseURI).pathname);
     } catch {
       return;
     }
