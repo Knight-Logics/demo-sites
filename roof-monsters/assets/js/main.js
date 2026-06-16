@@ -311,6 +311,7 @@ function applyEnterRules() {
   document.querySelectorAll('.hero-call-link').forEach((el) => prepareEnter(el, 'left', 240, true));
   document.querySelectorAll('.hero-form-card, #estimate').forEach((el) => prepareEnter(el, 'right', 120, true));
   document.querySelectorAll('.header-cta').forEach((el) => prepareEnter(el, 'right', 180, true));
+  document.querySelectorAll('.brand-lockup').forEach((el) => prepareEnter(el, 'left', 40, true));
 
   document.querySelectorAll('.page-hero h1').forEach((el) => prepareEnter(el, 'left', 0, true));
   document.querySelectorAll('.page-hero .breadcrumb').forEach((el) => prepareEnter(el, 'left', 100, true));
@@ -400,6 +401,37 @@ function initEnterAnimations() {
 
 window.rmInitEnterAnimations = initEnterAnimations;
 
+function initHeroParallax() {
+  const hero = document.querySelector('#hero.hero');
+  if (!hero) return;
+  if (prefersReducedMotion()) return;
+
+  const slides = hero.querySelector('.hero-slides');
+  if (!slides) return;
+
+  let ticking = false;
+
+  function update() {
+    const rect = hero.getBoundingClientRect();
+    const heroHeight = hero.offsetHeight || 1;
+    const scrolledPast = Math.min(Math.max(-rect.top, 0), heroHeight);
+    const rate = 0.42;
+
+    slides.style.transform = `translate3d(0, ${scrolledPast * rate}px, 0)`;
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+}
+
 function initParallaxBanners() {
   const sections = document.querySelectorAll('.atlas-banner--parallax, .rm-parallax-section');
   if (!sections.length) return;
@@ -458,6 +490,7 @@ function initSiteChrome() {
 
 function initPageFeatures() {
   initEnterAnimations();
+  initHeroParallax();
   initParallaxBanners();
   initHeroSlider();
   initTestimonialCarousel();
