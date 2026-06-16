@@ -311,7 +311,6 @@ function applyEnterRules() {
   document.querySelectorAll('.hero-call-link').forEach((el) => prepareEnter(el, 'left', 240, true));
   document.querySelectorAll('.hero-form-card, #estimate').forEach((el) => prepareEnter(el, 'right', 120, true));
   document.querySelectorAll('.header-cta').forEach((el) => prepareEnter(el, 'right', 180, true));
-  document.querySelectorAll('.brand-lockup').forEach((el) => prepareEnter(el, 'left', 40, true));
 
   document.querySelectorAll('.page-hero h1').forEach((el) => prepareEnter(el, 'left', 0, true));
   document.querySelectorAll('.page-hero .breadcrumb').forEach((el) => prepareEnter(el, 'left', 100, true));
