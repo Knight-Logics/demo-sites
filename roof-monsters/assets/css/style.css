@@ -1087,10 +1087,6 @@ ul {
     font-size: clamp(0.38rem, 0.28rem + 0.25cqi, 0.5rem);
   }
 
-  .header-cta-label {
-    display: none;
-  }
-
   .header-cta-number {
     font-size: clamp(0.62rem, 1.55cqi, 0.76rem);
   }
@@ -1151,8 +1147,16 @@ ul {
     width: auto;
   }
 
-  .brand-lockup {
-    display: none;
+  .brand-name {
+    font-size: clamp(0.52rem, 0.34rem + 0.45cqi, 0.76rem);
+  }
+
+  .brand-tagline {
+    font-size: clamp(0.38rem, 0.28rem + 0.22cqi, 0.5rem);
+  }
+
+  .header-lead {
+    max-width: clamp(9rem, 28vw, 14rem);
   }
 
   .rm-brand-logo--header {
@@ -1182,6 +1186,15 @@ ul {
     gap: clamp(6px, 1.5vw, 10px);
   }
 
+  .header-cta-text {
+    display: flex !important;
+  }
+
+  .header-cta-label {
+    display: block;
+    font-size: clamp(0.52rem, 2vw, 0.64rem);
+  }
+
   .header-cta-icon {
     width: clamp(34px, 9vw, 42px);
     height: clamp(34px, 9vw, 42px);
@@ -1190,10 +1203,6 @@ ul {
 
   .header-cta-number {
     font-size: clamp(0.68rem, 2.6vw, 0.88rem);
-  }
-
-  .header-cta-label {
-    font-size: clamp(0.52rem, 2vw, 0.64rem);
   }
 
   .hero {
@@ -1210,6 +1219,14 @@ ul {
 @media (max-width: 600px) {
   .header-quote-btn {
     display: none;
+  }
+
+  .brand-lockup {
+    display: none;
+  }
+
+  .header-lead {
+    max-width: none;
   }
 }
 
