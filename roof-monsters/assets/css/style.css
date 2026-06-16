@@ -182,9 +182,8 @@ ul {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(28, 28, 28, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  width: 100%;
+  background: var(--dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: box-shadow var(--transition), background var(--transition);
   overflow-x: clip;
@@ -193,7 +192,7 @@ ul {
 }
 
 .site-header.scrolled {
-  background: rgba(28, 28, 28, 0.98);
+  background: var(--dark2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
@@ -391,6 +390,66 @@ ul {
   isolation: isolate;
 }
 
+/* Header logo: 2D opacity flip (3D rotateY + backdrop-filter causes white edge seam) */
+.rm-brand-logo--header .rm-brand-logo__scene {
+  perspective: none;
+  transform-style: flat;
+}
+
+.rm-brand-logo--header .rm-brand-logo__spinner {
+  transform-style: flat;
+  animation: none;
+  transform: none;
+}
+
+.rm-brand-logo--header .rm-brand-logo__face--front {
+  transform: none;
+  animation: rmHeaderMonsterFront 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.rm-brand-logo--header .rm-brand-logo__face--back {
+  transform: scaleX(-1);
+  animation: rmHeaderMonsterBack 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.rm-brand-logo--header .rm-brand-logo__face img {
+  filter: none;
+}
+
+@keyframes rmHeaderMonsterFront {
+  0%,
+  18% {
+    opacity: 1;
+  }
+
+  32%,
+  68% {
+    opacity: 0;
+  }
+
+  82%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rmHeaderMonsterBack {
+  0%,
+  18% {
+    opacity: 0;
+  }
+
+  32%,
+  68% {
+    opacity: 1;
+  }
+
+  82%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .rm-brand-logo--drawer {
   height: 44px;
   contain: paint;
@@ -427,6 +486,16 @@ ul {
   .rm-brand-logo__spinner {
     animation: none;
     transform: rotateY(0deg);
+  }
+
+  .rm-brand-logo--header .rm-brand-logo__face--front,
+  .rm-brand-logo--header .rm-brand-logo__face--back {
+    animation: none;
+    opacity: 1;
+  }
+
+  .rm-brand-logo--header .rm-brand-logo__face--back {
+    opacity: 0;
   }
 }
 
