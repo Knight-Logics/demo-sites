@@ -186,9 +186,22 @@ ul {
   background: var(--dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: box-shadow var(--transition), background var(--transition);
-  overflow-x: clip;
+  overflow-x: visible;
   overflow-y: visible;
   max-width: 100%;
+}
+
+/* Extra width at the right edge — absorbs 3D logo spin compositor bleed */
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 100px;
+  height: 100%;
+  background: inherit;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .site-header.scrolled {
@@ -197,6 +210,8 @@ ul {
 }
 
 .header-inner {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: stretch;
@@ -381,7 +396,7 @@ ul {
   transform: rotateY(180deg) scaleX(-1) translateZ(1px);
 }
 
-/* Header: full bar height, bottom-aligned */
+/* Header: full bar height, bottom-aligned — keeps 3D spin with edge bleed catcher */
 .rm-brand-logo--header {
   height: 100%;
   min-height: 88px;
@@ -390,64 +405,8 @@ ul {
   isolation: isolate;
 }
 
-/* Header logo: 2D opacity flip (3D rotateY + backdrop-filter causes white edge seam) */
-.rm-brand-logo--header .rm-brand-logo__scene {
-  perspective: none;
-  transform-style: flat;
-}
-
-.rm-brand-logo--header .rm-brand-logo__spinner {
-  transform-style: flat;
-  animation: none;
-  transform: none;
-}
-
-.rm-brand-logo--header .rm-brand-logo__face--front {
-  transform: none;
-  animation: rmHeaderMonsterFront 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-}
-
-.rm-brand-logo--header .rm-brand-logo__face--back {
-  transform: scaleX(-1);
-  animation: rmHeaderMonsterBack 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-}
-
 .rm-brand-logo--header .rm-brand-logo__face img {
-  filter: none;
-}
-
-@keyframes rmHeaderMonsterFront {
-  0%,
-  18% {
-    opacity: 1;
-  }
-
-  32%,
-  68% {
-    opacity: 0;
-  }
-
-  82%,
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes rmHeaderMonsterBack {
-  0%,
-  18% {
-    opacity: 0;
-  }
-
-  32%,
-  68% {
-    opacity: 1;
-  }
-
-  82%,
-  100% {
-    opacity: 0;
-  }
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
 }
 
 .rm-brand-logo--drawer {
@@ -486,16 +445,6 @@ ul {
   .rm-brand-logo__spinner {
     animation: none;
     transform: rotateY(0deg);
-  }
-
-  .rm-brand-logo--header .rm-brand-logo__face--front,
-  .rm-brand-logo--header .rm-brand-logo__face--back {
-    animation: none;
-    opacity: 1;
-  }
-
-  .rm-brand-logo--header .rm-brand-logo__face--back {
-    opacity: 0;
   }
 }
 
