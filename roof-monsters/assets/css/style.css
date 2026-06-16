@@ -1138,24 +1138,21 @@ ul {
   .header-lead {
     align-items: center;
     gap: clamp(4px, 1.2vw, 8px);
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-width: 0;
-    max-width: clamp(8.5rem, 30vw, 12rem);
+    max-width: none;
   }
 
   .brand {
     align-items: center;
-    flex-shrink: 1;
+    flex-shrink: 0;
     min-width: 0;
     gap: clamp(6px, 1.5vw, 10px);
+    width: auto;
   }
 
-  .brand-name {
-    font-size: clamp(0.52rem, 0.34rem + 0.45cqi, 0.76rem);
-  }
-
-  .brand-tagline {
-    font-size: clamp(0.38rem, 0.28rem + 0.22cqi, 0.5rem);
+  .brand-lockup {
+    display: none;
   }
 
   .rm-brand-logo--header {
@@ -1207,10 +1204,6 @@ ul {
 @media (max-width: 480px) {
   .rm-brand-logo--header {
     --rm-header-logo-h: clamp(44px, 11vw, 54px);
-  }
-
-  .brand-tagline-line:last-child {
-    display: none;
   }
 }
 
