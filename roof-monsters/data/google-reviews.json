@@ -1,0 +1,46 @@
+{
+  "ratingValue": 5,
+  "reviewCount": 5,
+  "reviews": [
+    {
+      "name": "Marya Morrison",
+      "meta": "Local Guide · 46 reviews",
+      "date": "10 months ago",
+      "text": "Rob has done excellent roof repair and replacement at my Tampa Bay investment properties and home — fair pricing and top-quality work. My go-to licensed roofing contractor.",
+      "stars": 5,
+      "avatarColor": "#1a56c4"
+    },
+    {
+      "name": "David Saren",
+      "meta": "1 review",
+      "date": "9 months ago",
+      "text": "Several roof repairs over the years, each diagnosed fast at reasonable cost. Roof Monsters just finished a full shingle roof replacement and flat deck — professional from start to finish.",
+      "stars": 5,
+      "avatarColor": "#c0392b"
+    },
+    {
+      "name": "Jerry Edmonds",
+      "meta": "10 reviews",
+      "date": "8 months ago",
+      "text": "Prompt roofing crew — completed our roof replacement in one day with thorough cleanup. Not a single stray nail left on the property.",
+      "stars": 5,
+      "avatarColor": "#1e6b2e"
+    },
+    {
+      "name": "Tim Bradshaw",
+      "meta": "14 reviews",
+      "date": "a year ago",
+      "text": "Punctual, thorough, economical roofing contractor. Same crew every job. Passed our 4-point wind inspection with no issues after the work.",
+      "stars": 5,
+      "avatarColor": "#FBBC05"
+    },
+    {
+      "name": "Mary Paxton",
+      "meta": "1 review",
+      "date": "a year ago",
+      "text": "Fabulous Tampa Bay roofing company — had my roof done in one day. Polite crew, very reasonable pricing. Highly recommend Roof Monsters.",
+      "stars": 5,
+      "avatarColor": "#f39941"
+    }
+  ]
+}

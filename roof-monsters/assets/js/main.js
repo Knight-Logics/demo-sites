@@ -49,7 +49,31 @@ function initSiteNav() {
     dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
   });
 
-  document.addEventListener('click', closeAllDropdowns);
+  function closeAllAreaSubmenus() {
+    document.querySelectorAll('.nav-area-group-btn').forEach((btn) => {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.querySelectorAll('.nav-area-group').forEach((group) => {
+    const btn = group.querySelector('.nav-area-group-btn');
+    const submenu = group.querySelector('.nav-area-submenu');
+    if (!btn || !submenu) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      closeAllAreaSubmenus();
+      btn.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    submenu.addEventListener('click', (e) => e.stopPropagation());
+  });
+
+  document.addEventListener('click', () => {
+    closeAllDropdowns();
+    closeAllAreaSubmenus();
+  });
 
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const mobileNav = document.getElementById('mobile-nav');
@@ -116,6 +140,17 @@ function initSiteNav() {
       mobileAreasToggle.setAttribute('aria-expanded', String(open));
     });
   }
+
+  document.querySelectorAll('.mobile-area-county-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const targetId = toggle.getAttribute('data-target');
+      const sub = targetId ? document.getElementById(targetId) : null;
+      if (!sub) return;
+      const open = toggle.classList.toggle('is-open');
+      sub.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  });
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900) closeMobileNav();
@@ -228,11 +263,18 @@ function initTestimonialCarousel() {
   updateCarousel();
 }
 
+function formatStatText(value, suffix) {
+  return value.toLocaleString() + (suffix || '');
+}
+
 function animateCountUp(el) {
   const target = parseInt(el.dataset.target, 10);
-  const suffix = el.dataset.suffix || ' +';
-  const duration = 2000;
+  if (Number.isNaN(target)) return;
+  const suffix = el.dataset.suffix ?? ' +';
+  const duration = parseInt(el.dataset.duration, 10) || 1400;
   const startTime = performance.now();
+
+  el.textContent = formatStatText(0, suffix);
 
   function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
@@ -243,12 +285,12 @@ function animateCountUp(el) {
     const progress = Math.min(elapsed / duration, 1);
     const eased = easeOutQuart(progress);
     const value = Math.floor(eased * target);
-    el.textContent = value.toLocaleString() + suffix;
+    el.textContent = formatStatText(value, suffix);
 
     if (progress < 1) {
       requestAnimationFrame(update);
     } else {
-      el.textContent = target.toLocaleString() + suffix;
+      el.textContent = formatStatText(target, suffix);
     }
   }
 
@@ -256,23 +298,26 @@ function animateCountUp(el) {
 }
 
 function initCountUp() {
-  const statsSection = document.querySelector('[data-stats-section]');
-  const statNums = document.querySelectorAll('.stat-num[data-target]');
-  let countupFired = false;
+  const statSelectors = '.stat-num[data-target], .mini-stat-num[data-target]';
+  const sections = document.querySelectorAll('[data-stats-section], .mini-stats-banner[data-countup]');
 
-  if (!statsSection || !statNums.length) return;
+  sections.forEach((section) => {
+    const statNums = section.querySelectorAll(statSelectors);
+    if (!statNums.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !countupFired) {
-        countupFired = true;
-        statNums.forEach((el) => animateCountUp(el));
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
+    let countupFired = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !countupFired) {
+          countupFired = true;
+          statNums.forEach((el) => animateCountUp(el));
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
 
-  observer.observe(statsSection);
+    observer.observe(section);
+  });
 }
 
 const RM_DIRECTIONS = ['left', 'right', 'bottom'];
@@ -306,10 +351,10 @@ function applyEnterRules() {
   });
 
   document.querySelectorAll('.hero-eyebrow').forEach((el) => prepareEnter(el, 'left', 0, true));
-  document.querySelectorAll('.hero-content h1').forEach((el) => prepareEnter(el, 'left', 80, true));
-  document.querySelectorAll('.hero-sub').forEach((el) => prepareEnter(el, 'left', 160, true));
-  document.querySelectorAll('.hero-call-link').forEach((el) => prepareEnter(el, 'left', 240, true));
-  document.querySelectorAll('.hero-form-card, #estimate').forEach((el) => prepareEnter(el, 'right', 120, true));
+  document.querySelectorAll('.hero__headline h1, .hero-content h1').forEach((el) => prepareEnter(el, 'left', 80, true));
+  document.querySelectorAll('.hero-lead, .hero-sub').forEach((el) => prepareEnter(el, 'left', 160, true));
+  document.querySelectorAll('.hero-call-link, .hero-cta-primary').forEach((el) => prepareEnter(el, 'left', 240, true));
+  document.querySelectorAll('.hero-lead-panel, .hero-form-card, #estimate').forEach((el) => prepareEnter(el, 'right', 120, true));
   document.querySelectorAll('.header-cta').forEach((el) => prepareEnter(el, 'right', 180, true));
 
   document.querySelectorAll('.page-hero h1').forEach((el) => prepareEnter(el, 'left', 0, true));
@@ -340,13 +385,17 @@ function applyEnterRules() {
   });
 
   document.querySelectorAll(
-    '.services-grid .service-card, .services-page-grid .service-page-card, .why-choose-grid .why-card, .testimonial-card, .blog-card, .gallery-item, .offer-card, .team-content, .team-image',
+    '.services-grid .rm-service-card, .services-page-grid .service-page-card, .why-choose-grid .why-card, .testimonial-card, .blog-card, .gallery-item, .offer-card, .team-content, .team-image',
   ).forEach((el, index) => {
     prepareEnter(el, RM_DIRECTIONS[index % RM_DIRECTIONS.length], (index % 3) * 90, false);
   });
 
   document.querySelectorAll('.atlas-inner > *').forEach((el, index) => {
     prepareEnter(el, index === 0 ? 'left' : 'right', index * 100, false);
+  });
+
+  document.querySelectorAll('.rm-map-review-shell').forEach((el) => {
+    prepareEnter(el, 'bottom', 120, false);
   });
 
   document.querySelectorAll('[data-rm-reveal]').forEach((el, index) => {
@@ -360,7 +409,7 @@ function revealImmediateEnter() {
   });
 
   document.querySelectorAll('.hero-license-bar').forEach((el) => {
-    window.setTimeout(() => el.classList.add('is-visible'), 550);
+    el.classList.add('is-visible');
   });
 }
 
@@ -401,6 +450,8 @@ function initEnterAnimations() {
 window.rmInitEnterAnimations = initEnterAnimations;
 
 function initHeroParallax() {
+  if (document.querySelector('.hero-stage')) return;
+
   const hero = document.querySelector('#hero.hero');
   if (!hero) return;
   if (prefersReducedMotion()) return;
@@ -429,6 +480,216 @@ function initHeroParallax() {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   update();
+}
+
+function initRmGoogleReviews() {
+  const carousels = document.querySelectorAll('[data-rm-review-carousel]');
+  if (!carousels.length) return;
+
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector('.rm-review-carousel-track');
+    const prevBtn = carousel.querySelector('.rm-review-carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.rm-review-carousel-btn.next');
+    const showcase = carousel.closest('.rm-google-reviews-showcase');
+    const dotsContainer = showcase
+      ? showcase.querySelector('.rm-review-carousel-dots')
+      : null;
+    const summaryEl = document.getElementById('rm-review-summary');
+    const mapRatingEl = document.getElementById('rm-map-rating');
+    const seedEl = showcase ? showcase.querySelector('#google-reviews-seed') : null;
+
+    if (!track || !prevBtn || !nextBtn || !dotsContainer || !showcase) return;
+
+    let cards = [];
+    let currentIndex = 0;
+    let reviews = [];
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getInitial(name) {
+      const clean = String(name || '').trim();
+      return clean ? clean.charAt(0).toUpperCase() : '?';
+    }
+
+    function formatStars(count) {
+      const stars = Math.max(1, Math.min(5, Number(count) || 5));
+      return '\u2605'.repeat(stars);
+    }
+
+    function reviewCardMarkup(review) {
+      return (
+        '<article class="rm-review-card">'
+        + '<div class="rm-review-card-header">'
+        + '<span class="rm-review-avatar" style="background:'
+        + escapeHtml(review.avatarColor || '#1a56c4')
+        + ';" aria-hidden="true">'
+        + escapeHtml(getInitial(review.name))
+        + '</span>'
+        + '<div>'
+        + '<div class="rm-review-name">'
+        + escapeHtml(review.name)
+        + '</div>'
+        + '<div class="rm-review-meta">'
+        + escapeHtml(review.meta || '')
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<div class="rm-review-card-stars" role="img" aria-label="'
+        + escapeHtml(String(Number(review.stars) || 5))
+        + ' stars">'
+        + formatStars(review.stars)
+        + '</div>'
+        + '<p class="rm-review-text">'
+        + escapeHtml(review.text || '')
+        + '</p>'
+        + '<div class="rm-review-date">'
+        + escapeHtml(review.date || '')
+        + '</div>'
+        + '</article>'
+      );
+    }
+
+    function applySummary(payload) {
+      const rating = Number(payload.ratingValue || 5).toFixed(1);
+      const count = Number(payload.reviewCount || reviews.length || 0);
+      const label = count === 1 ? ' review' : ' reviews';
+      const summaryText = `${rating} \u00b7 ${count}${label}`;
+      if (summaryEl) summaryEl.textContent = summaryText;
+      if (mapRatingEl) {
+        mapRatingEl.textContent = `${formatStars(payload.ratingValue || 5)} ${rating} \u00b7 ${count} Google review${count === 1 ? '' : 's'}`;
+        mapRatingEl.setAttribute('aria-label', `${rating} out of 5 stars, ${count} Google reviews`);
+      }
+    }
+
+    function visibleCount() {
+      if (window.innerWidth <= 720) return 1;
+      if (window.innerWidth <= 1060) return 2;
+      return 3;
+    }
+
+    function pageCount() {
+      return Math.max(1, Math.ceil(cards.length / visibleCount()));
+    }
+
+    function maxIndex() {
+      return Math.max(0, cards.length - visibleCount());
+    }
+
+    function cardSpan() {
+      if (!cards.length) return 0;
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return cards[0].getBoundingClientRect().width + gap;
+    }
+
+    function updateButtons() {
+      const singlePage = pageCount() <= 1 || cards.length === 0;
+      prevBtn.disabled = singlePage || currentIndex <= 0;
+      nextBtn.disabled = singlePage || currentIndex >= maxIndex();
+    }
+
+    function update() {
+      currentIndex = Math.max(0, Math.min(currentIndex, maxIndex()));
+      track.style.transform = `translateX(${-currentIndex * cardSpan()}px)`;
+
+      const activePage = Math.floor(currentIndex / visibleCount());
+      dotsContainer.querySelectorAll('.rm-review-carousel-dot').forEach((dot, index) => {
+        const isActive = index === activePage;
+        dot.classList.toggle('active', isActive);
+        if (isActive) {
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.removeAttribute('aria-current');
+        }
+      });
+
+      updateButtons();
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      for (let index = 0; index < pageCount(); index += 1) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `rm-review-carousel-dot${index === 0 ? ' active' : ''}`;
+        dot.setAttribute('aria-label', `Go to review page ${index + 1}`);
+        if (index === 0) dot.setAttribute('aria-current', 'true');
+        dot.addEventListener('click', () => {
+          currentIndex = index * visibleCount();
+          update();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function renderReviews(payload) {
+      reviews = Array.isArray(payload.reviews) ? payload.reviews.slice() : [];
+      applySummary(payload);
+
+      if (!reviews.length) {
+        track.innerHTML = '<article class="rm-review-card"><p class="rm-review-text">Reviews will appear here once posted on Google.</p></article>';
+      } else {
+        track.innerHTML = reviews.map(reviewCardMarkup).join('');
+      }
+
+      cards = Array.from(track.querySelectorAll('.rm-review-card'));
+      currentIndex = 0;
+      carousel.classList.toggle('single-review', cards.length <= 1);
+      buildDots();
+      update();
+    }
+
+    function parseSeedPayload() {
+      if (!seedEl) return null;
+      try {
+        return JSON.parse(seedEl.textContent || '{}');
+      } catch (error) {
+        console.warn('Google review seed parse failed:', error);
+        return null;
+      }
+    }
+
+    async function loadReviews() {
+      let payload = null;
+      try {
+        const response = await fetch('./data/google-reviews.json', { cache: 'no-store' });
+        if (response.ok) {
+          payload = await response.json();
+        }
+      } catch (error) {
+        console.warn('Google review feed fetch failed, using seed data:', error);
+      }
+
+      if (!payload) payload = parseSeedPayload();
+      if (!payload || !Array.isArray(payload.reviews)) {
+        payload = { ratingValue: 5, reviewCount: 0, reviews: [] };
+      }
+
+      renderReviews(payload);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex -= 1;
+      update();
+    });
+    nextBtn.addEventListener('click', () => {
+      currentIndex += 1;
+      update();
+    });
+    window.addEventListener('resize', () => {
+      buildDots();
+      update();
+    });
+
+    loadReviews();
+  });
 }
 
 function initParallaxBanners() {
@@ -493,6 +754,7 @@ function initPageFeatures() {
   initParallaxBanners();
   initHeroSlider();
   initTestimonialCarousel();
+  initRmGoogleReviews();
   initCountUp();
   initEstimateForms();
 }

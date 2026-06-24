@@ -105,41 +105,101 @@ def cta_block(short: str) -> str:
 
 def services_block(short: str) -> str:
     return f"""
-        <h3>Roofing Services We Provide</h3>
-        <div class="benefits-list">
-          <div class="benefit-item"><i class="fa-solid fa-check-circle"></i><p><strong>Roof Installation &amp; Replacement</strong> — New construction and re-roof projects using premium shingles and proven installation methods.</p></div>
-          <div class="benefit-item"><i class="fa-solid fa-check-circle"></i><p><strong>Repairs &amp; Maintenance</strong> — Fast leak diagnosis, flashing repairs, and preventative maintenance to extend roof life.</p></div>
-          <div class="benefit-item"><i class="fa-solid fa-check-circle"></i><p><strong>Storm &amp; Emergency Response</strong> — Tarping, insurance documentation support, and permanent repairs after severe weather.</p></div>
-          <div class="benefit-item"><i class="fa-solid fa-check-circle"></i><p><strong>Free Inspections</strong> — No-pressure assessments with honest recommendations for {esc(short)} property owners.</p></div>
-        </div>
+        <!-- rm-cross-links:start -->
+        <h3>Roofing Services in {esc(short)}</h3>
+        <ul class="rm-cross-links-inline">
+          <li><a href="/services/comprehensive-roof-installations/">Roof Installation &amp; Replacement</a></li>
+          <li><a href="/services/expert-roof-repairs-and-maintenance/">Roof Repairs &amp; Maintenance</a></li>
+          <li><a href="/services/storm-damage-repair-specialists/">Storm &amp; Emergency Response</a></li>
+          <li><a href="/services/free-roof-inspections-and-consultations/">Free Roof Inspections</a></li>
+          <li><a href="/services/gutter-installation-and-cleaning/">Gutter Installation &amp; Cleaning</a></li>
+          <li><a href="/services/skylight-installation-and-repair/">Skylight Installation &amp; Repair</a></li>
+        </ul>
+        <!-- rm-cross-links:end -->
 """
 
 
-def why_block(short: str, name: str) -> str:
+WHY_VARIANTS: dict[str, list[tuple[str, str, str]]] = {
+    "roofing-company-dunedin-florida": [
+        ("Headquarters Advantage", "As our home base since 1988, Dunedin projects get the fastest scheduling, direct owner communication, and crews who know Gulf-side salt exposure block by block."),
+        ("HOA & Waterfront Experience", "From downtown Dunedin to waterfront properties, we document work for HOAs and recommend ventilation and shingle systems suited to bay humidity."),
+        ("Same Crew, Every Job", "Roof Monsters uses the same trained installation crew for replacements — a consistency our Dunedin customers cite in reviews."),
+    ],
+    "roofing-company-tampa-florida": [
+        ("Hillsborough County Coverage", "We serve all of Hillsborough — not a narrow radius — from South Tampa and Westshore to Brandon and Plant City with licensed Florida crews."),
+        ("Storm-Ready Repairs", "After tropical systems, Tampa homeowners call us for tarping, documentation, and permanent shingle or flat deck repairs that pass inspection."),
+        ("Commercial & Residential", "From bungalows to multi-unit properties, we scope projects clearly and stand behind work with a 15-year workmanship warranty."),
+    ],
+    "roofing-company-clearwater-florida": [
+        ("Beach & Inland Expertise", "Clearwater Beach wind exposure differs from Countryside subdivisions — we match materials and fastening patterns to each microclimate."),
+        ("Pinellas County Reach", "Clearwater sits at the heart of our Pinellas service territory with quick dispatch from our Dunedin headquarters."),
+        ("Atlas Warranty Backed", "Qualifying installs include Atlas Designer Shingles with manufacturer-backed protection — popular with Clearwater re-roof projects."),
+    ],
+    "roofing-company-st-petersburg-florida": [
+        ("Historic & Modern Homes", "St. Pete's mix of older districts and newer builds requires flexible flashing, ventilation, and drainage strategies."),
+        ("Bay Humidity Performance", "We prioritize underlayment and ventilation details that reduce moisture buildup common near Tampa Bay."),
+        ("Insurance Documentation", "When storm damage qualifies, we help St. Petersburg owners capture photos and scope for adjusters."),
+    ],
+    "roofing-company-palm-harbor-florida": [
+        ("Gulf-Side Wind Design", "Palm Harbor waterfront and golf-community homes need systems rated for coastal wind zones — we install to Florida code and manufacturer specs."),
+        ("Short Drive From HQ", "Minutes from Dunedin, Palm Harbor is one of our most active markets for full replacements and targeted leak repairs."),
+        ("Neighborhood Familiarity", "Our crews know common roof ages and HOA requirements across Palm Harbor communities."),
+    ],
+    "roofing-company-pinellas-county-florida": [
+        ("County-Wide, Not Patchwork", "We serve all Pinellas municipalities and unincorporated areas — city pages highlight frequent zones, not limits."),
+        ("Dunedin Headquarters", "Operating from Dunedin since 1988 gives Pinellas County clients local accountability and fast response."),
+        ("Five-County Tampa Bay Reach", "Pinellas is central to our published service area spanning Pasco, Hernando, Hillsborough, and Manatee."),
+    ],
+    "roofing-company-hillsborough-county-florida": [
+        ("All of Hillsborough", "Tampa, Brandon, Riverview, Plant City, and surrounding communities — full-county roofing, not a small map pin."),
+        ("Urban Scheduling Discipline", "Hillsborough projects often involve tight timelines and access constraints — we plan deliveries and tear-off accordingly."),
+        ("Storm Season Readiness", "County-wide coverage means faster emergency response when tropical weather hits the Tampa metro."),
+    ],
+    "roofing-company-pasco-county-florida": [
+        ("Gulf & Inland Pasco", "From New Port Richey on the Gulf to Wesley Chapel growth corridors, we serve all of Pasco County."),
+        ("Post-Storm Demand", "Pasco sees heavy seasonal wear — we handle tarping, inspection, and permanent repairs after Gulf systems."),
+        ("Published Service Territory", "Pasco is explicitly listed in our Tampa Bay coverage alongside Pinellas and Hillsborough."),
+    ],
+}
+
+
+def why_cards_for_slug(slug: str, short: str, name: str) -> list[tuple[str, str, str]]:
+    if slug in WHY_VARIANTS:
+        return WHY_VARIANTS[slug]
+    if "county" in slug:
+        return [
+            ("Full-County Service", f"We serve all of {name}, including featured cities and unincorporated communities — contact us to confirm scheduling anywhere in the county."),
+            ("Licensed Florida Contractor", "Roofing licenses CCC1335398, CCC052490 and building license CBC015719 — fully insured on every project."),
+            ("Family Owned Since 1988", "Florida natives serving Florida with clear estimates and craftsmanship you can verify in our project gallery."),
+        ]
+    return [
+        ("Local Knowledge", f"We understand building codes, HOA requirements, and roofing systems that perform best in {name}."),
+        ("Licensed & Insured", "Florida-licensed roofing and building contractor with documented insurance on every job."),
+        ("Tampa Bay Experience", f"{short} projects benefit from nearly four decades of Gulf Coast roofing experience from our Dunedin team."),
+    ]
+
+
+def why_block(short: str, name: str, slug: str) -> str:
+    cards = why_cards_for_slug(slug, short, name)
+    icons = ["fa-map-location-dot", "fa-shield-halved", "fa-house-chimney"]
+    card_html = []
+    for (title, body, icon) in zip([c[0] for c in cards], [c[1] for c in cards], icons):
+        card_html.append(f"""
+        <div class="why-card">
+          <div class="why-num"><i class="fa-solid {icon}"></i></div>
+          <h4>{esc(title)}</h4>
+          <p>{esc(body)}</p>
+        </div>""")
     return f"""
   <section class="why-choose-section section-pad">
     <div class="container">
       <div class="section-header">
         <span class="section-eyebrow">Why Roof Monsters</span>
         <h2>Why {esc(short)} Property Owners <span class="accent">Choose Us</span></h2>
-        <p class="section-desc">Local expertise, premium materials, and a customer-first process from the first call through final walkthrough.</p>
+        <p class="section-desc">Local expertise, premium materials, and a customer-first process from first call through final walkthrough.</p>
       </div>
       <div class="why-choose-grid">
-        <div class="why-card">
-          <div class="why-num"><i class="fa-solid fa-map-location-dot"></i></div>
-          <h4>Local Knowledge</h4>
-          <p>We understand regional building codes, HOA requirements, and the roofing systems that perform best in {esc(name)}.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num"><i class="fa-solid fa-shield-halved"></i></div>
-          <h4>Licensed &amp; Insured</h4>
-          <p>Florida-licensed roofing and building contractor. Roofing licenses CCC1335398, CCC052490. Building license CBC015719. Fully insured on every project.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num"><i class="fa-solid fa-house-chimney"></i></div>
-          <h4>Family Owned Since 1988</h4>
-          <p>Florida natives serving Florida — honest communication and craftsmanship you can count on year after year.</p>
-        </div>
+        {"".join(card_html)}
       </div>
     </div>
   </section>
@@ -240,7 +300,7 @@ def city_page(area: dict, config: dict) -> str:
       </div>
     </div>
   </section>
-""" + why_block(short, name) + cta_block(short) + FOOT
+""" + why_block(short, name, area["slug"]) + cta_block(short) + FOOT
 
 
 def county_page(area: dict, config: dict) -> str:
@@ -281,7 +341,7 @@ def county_page(area: dict, config: dict) -> str:
       </div>
     </div>
   </section>
-""" + featured_cities_html(area) + why_block(short, name) + cta_block(short) + FOOT
+""" + featured_cities_html(area) + why_block(short, name, area["slug"]) + cta_block(short) + FOOT
 
 
 def hub_page(config: dict, cities: list[dict], counties: list[dict]) -> str:

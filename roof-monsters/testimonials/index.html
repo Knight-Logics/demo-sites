@@ -12,9 +12,65 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testimonials | Roof Monsters â€” Tampa Bay Roofing</title>
+  <title>Testimonials | Roof Monsters — Tampa Bay Roofing</title>
   <meta name="description" content="See what Tampa Bay homeowners say about Roof Monsters. Hundreds of 5-star reviews for roofing installations, repairs, and maintenance across Pasco, Pinellas &amp; Hillsborough Counties." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+<!-- rm-seo:start -->
+  <link rel="canonical" href="https://roofmonsters.co/testimonials/" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Roof Monsters" />
+  <meta property="og:title" content="Testimonials | Roof Monsters — Tampa Bay Roofing" />
+  <meta property="og:description" content="See what Tampa Bay homeowners say about Roof Monsters. Hundreds of 5-star reviews for roofing installations, repairs, and maintenance across Pasco, Pinellas &amp; Hillsborough Counties." />
+  <meta property="og:url" content="https://roofmonsters.co/testimonials/" />
+  <meta property="og:image" content="https://roofmonsters.co/assets/images/gallery/pinellas-new-roof.webp" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Testimonials | Roof Monsters — Tampa Bay Roofing" />
+  <meta name="twitter:description" content="See what Tampa Bay homeowners say about Roof Monsters. Hundreds of 5-star reviews for roofing installations, repairs, and maintenance across Pasco, Pinellas &amp; Hillsborough Counties." />
+  <meta name="twitter:image" content="https://roofmonsters.co/assets/images/gallery/pinellas-new-roof.webp" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://roofmonsters.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Testimonials",
+      "item": "https://roofmonsters.co/testimonials/"
+    }
+  ]
+}
+  </script>
+  <script>
+(function () {
+  var path = location.pathname;
+  var marker = '/roof-monsters/';
+  var idx = path.indexOf(marker);
+  if (idx < 0) return;
+  var demoBase = "https://knight-logics.github.io/demo-sites/roof-monsters";
+  var rel = path.slice(idx + marker.length - 1);
+  if (!rel.endsWith('/')) {
+    var last = rel.lastIndexOf('/');
+    rel = last > 0 ? rel.slice(0, last + 1) : '/';
+  }
+  var canonical = demoBase + (rel === '/' ? '/' : rel);
+  var link = document.querySelector('link[rel="canonical"]');
+  if (link) link.setAttribute('href', canonical);
+  ['og:url'].forEach(function (prop) {
+    var meta = document.querySelector('meta[property="' + prop + '"]');
+    if (meta) meta.setAttribute('content', canonical);
+  });
+})();
+  </script>
+<!-- rm-seo:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Roboto+Slab:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -28,7 +84,7 @@
     <div class="container">
       <h1>Our <span class="accent">Testimonials</span></h1>
       <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="./">Home</a>
+        <a href="/">Home</a>
         <i class="fa-solid fa-chevron-right"></i>
         <span>Testimonials</span>
       </nav>
@@ -41,7 +97,7 @@
       <div class="section-header">
         <span class="section-eyebrow">Client Reviews</span>
         <h2>What Our Clients <span class="accent">Say</span></h2>
-        <p class="section-desc">Don't take our word for it â€” hear from the Tampa Bay homeowners and businesses who trust Roof Monsters for all their roofing needs.</p>
+        <p class="section-desc">Don't take our word for it — hear from the Tampa Bay homeowners and businesses who trust Roof Monsters for all their roofing needs.</p>
       </div>
 
       <div class="reviews-grid">
