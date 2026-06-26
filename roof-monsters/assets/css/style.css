@@ -422,23 +422,73 @@ ul {
   isolation: isolate;
 }
 
+.rm-brand-logo--header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.08) 44%,
+    rgba(var(--gold-rgb), 0.55) 50%,
+    rgba(255, 255, 255, 0.12) 56%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  background-position: 200% 0;
+  animation: rmShimmerSweep 3.6s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+}
+
 .rm-brand-logo--header .rm-brand-logo__face img {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
 }
 
 .rm-brand-logo--drawer {
   height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  width: calc(44px * 640 / 736);
+  max-width: calc(44px * 640 / 736);
   contain: paint;
   isolation: isolate;
 }
 
 .rm-brand-logo--footer {
-  height: 80px;
+  height: 88px;
+  min-height: 88px;
+  max-height: 88px;
+  width: calc(88px * 640 / 736);
+  max-width: calc(88px * 640 / 736);
+  contain: paint;
+  isolation: isolate;
 }
 
-.rm-brand-logo--static .rm-brand-logo__spinner {
-  animation: none;
-  transform: rotateY(0deg);
+.rm-brand-logo--footer .rm-brand-logo__face img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.rm-brand-logo--drawer .rm-brand-logo__face img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.rm-brand-logo--team {
+  --rm-team-logo-h: clamp(260px, 32vw, 400px);
+  height: var(--rm-team-logo-h);
+  min-height: var(--rm-team-logo-h);
+  max-height: var(--rm-team-logo-h);
+  width: calc(var(--rm-team-logo-h) * 640 / 736);
+  max-width: calc(var(--rm-team-logo-h) * 640 / 736);
+  contain: paint;
+  isolation: isolate;
+}
+
+.rm-brand-logo--team .rm-brand-logo__face img {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
 }
 
 @keyframes rmLogoMonsterFlip {
@@ -458,10 +508,34 @@ ul {
   }
 }
 
+@keyframes rmShimmerSweep {
+  0%,
+  72% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -120% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rm-brand-logo__spinner {
     animation: none;
     transform: rotateY(0deg);
+  }
+
+  .rm-brand-logo--header::after,
+  .header-quote-btn {
+    animation: none;
+  }
+
+  .rm-brand-logo--header::after {
+    opacity: 0;
+  }
+
+  .header-quote-btn {
+    background-image: none;
   }
 }
 
@@ -529,11 +603,26 @@ ul {
 }
 
 .header-quote-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 8px clamp(10px, 1.1vw, 14px);
-  background: var(--orange);
+  background-color: var(--orange);
+  background-image: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.2) 44%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.2) 56%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: 200% 0;
+  animation: rmShimmerSweep 2.4s ease-in-out infinite;
   color: #000;
   font-size: clamp(0.54rem, 1.25cqi, 0.68rem);
   font-weight: 700;
@@ -542,12 +631,13 @@ ul {
   border-radius: var(--radius);
   white-space: nowrap;
   text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
+  transition: background-color var(--transition), transform var(--transition);
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .header-quote-btn:hover {
-  background: var(--orange-dk);
+  background-color: var(--orange-dk);
   color: #000;
   transform: translateY(-1px);
 }
@@ -3535,12 +3625,27 @@ html.rm-js [data-rm-reveal].is-visible {
   align-items: center;
 }
 
-.team-image img {
+.team-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-image > img {
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
   width: 100%;
   object-fit: cover;
   aspect-ratio: 1;
+}
+
+.home-page .team-image > .rm-brand-logo {
+  margin: 0 auto;
+}
+
+.home-page .team-image > img {
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .team-content h2 {
@@ -4010,8 +4115,12 @@ html.rm-js [data-rm-reveal].is-visible {
   }
 
   .rm-brand-logo--footer {
-    height: 68px;
-    --rm-monster-top: -52%;
+    --rm-footer-logo-h: clamp(64px, 16vw, 88px);
+    height: var(--rm-footer-logo-h);
+    min-height: var(--rm-footer-logo-h);
+    max-height: var(--rm-footer-logo-h);
+    width: calc(var(--rm-footer-logo-h) * 640 / 736);
+    max-width: calc(var(--rm-footer-logo-h) * 640 / 736);
   }
 
   .footer-info {
