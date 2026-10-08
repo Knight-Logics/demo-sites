@@ -8,6 +8,7 @@ Public repository for lightweight pitch demos and concept sites.
 - `kreative-dreams-academy/` — child care and early learning demo for Kreative Dreams Academy
 - `roof-monsters/` — Tampa Bay roofing multi-page demo concept for Roof Monsters
 - `titan-roofing-repairs/` — owner-led Georgia roofing demo concept built from supplied branding and project images
+- `landman-excavation/` — North Georgia excavation and grading demo for LandMan
 
 ## Publishing model
 
@@ -22,3 +23,4 @@ Public repository for lightweight pitch demos and concept sites.
 - Kreative Dreams Academy demo: `/kreative-dreams-academy/`
 - Roof Monsters demo: `/roof-monsters/`
 - Titan demo: `/titan-roofing-repairs/`
+- LandMan demo: `/landman-excavation/`
